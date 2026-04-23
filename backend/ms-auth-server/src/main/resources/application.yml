@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    default: default
+  application:
+    name: ms-auth-server
+  config:
+    import:
+  datasource:
+    url:
+    username: sa
+    password: sa
+    driver-class-name:
+  jpa:
+    database-platform:
+    hibernate:
+      ddl-auto: update
+server:
+  port: 3000
+  servlet:
+    context-path: /ms-auth-server
