@@ -1,5 +1,4 @@
-version: '29.1.5'
-
+version: '3.8'
 services:
   db-socios:
     image: postgres:18.1
@@ -12,17 +11,19 @@ services:
       POSTGRES_USER: 'userSociosSigap'
       POSTGRES_PASSWORD: 'systemSociosSigap2026'
     ports:
-      - '5434:5434'
+      - '5434:5432' # Tu PC usara el 5434, el contenedor usa su 5432 original
   db-user:
     image: postgres:18.1
     container_name: db-users
     restart: always
+    volumes:
+      - ./sql/create_schema_auth.sql:/docker-entrypoint-initdb.d/create_schema_auth.sql
     environment:
       POSTGRES_DB: 'db-users'
       POSTGRES_USER: 'userAdminSigap'
       POSTGRES_PASSWORD: 'user_admin_sigap2026'
     ports:
-      - '5435:5435' # Puerto 5435 en la PC mapea al 5435 del contenedor
+      - '5435:5432' # Tu PC usara el 5435, el contenedor usa su 5432 original
 
 
 
